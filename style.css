@@ -1,0 +1,1450 @@
+
+
+
+
+
+
+
+
+
+
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 10;
+  height: 100%;
+  background-image: url("https://thumbs.gfycat.com/TangibleBreakableFrillneckedlizard-size_restricted.gif");
+  padding:17px;
+  border:10px double black;
+  background:lightblube;
+   border-collapse: collapse;
+}
+
+
+.chat {
+  height: calc(100% - 69px);
+}
+
+.chat-container {
+  height: 100%;
+}
+
+
+
+.user-bar:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.user-bar div {
+  float: left;
+  transform: translateY(-50%);
+  position: relative;
+  top: 50%;
+}
+
+
+
+
+.user-bar .status {
+  display: block;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0;
+  width:auto;
+}
+
+.conversation {
+  height: calc(100% - 12px);
+  position: relative;
+    background-image: url("https://i.gifer.com/7LP8.gif");
+  background-color: #cccccc;
+  background-size: cover;
+    background-attachment:fixed;
+    margin: 0;
+    padding: 0;
+    height:100%;
+    width:100%;
+ font-style:serif;
+   from {top: 0px;}
+    to {top: 200px;}
+  z-index: 0;
+  
+}
+
+.conversation ::-webkit-scrollbar {
+  transition: all .5s;
+  width: 5px;
+  height: 1px;
+  z-index: 10;
+}
+
+.conversation ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.conversation ::-webkit-scrollbar-thumb {
+  background: #b3ada7;
+}
+
+.conversation .conversation-container {
+  height: calc(100% - 68px);
+  box-shadow: inset 0 10px 10px -10px #FFFFFF;
+  overflow-x: hidden;
+  padding: 0 16px;
+  margin-bottom: 5px;
+  
+}
+
+.conversation .conversation-container:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.message {
+  color: #FFFFFF;
+clear: both;
+  line-height: 18px;
+  font-size: 15px;
+  padding: 8px;
+  position: relative;
+  margin: 8px 0;
+  max-width: 80%;
+  word-wrap: break-word;
+
+
+}
+.message:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.metadata {
+  display: inline-block;
+  float: right;
+  padding: 0 0 0 7px;
+  position: relative;
+  bottom: -4px;
+}
+.metadata .time {
+  color: rgba(0, 0, 0, .45);
+  font-size: 11px;
+  display: inline-block;
+  color:gray;
+}
+
+.metadata .tick {
+  display: inline-block;
+  margin-left: 2px;
+  position: relative;
+  top: 4px;
+  height: 16px;
+  width: 16px;
+}
+
+.metadata .tick svg {
+  position: absolute;
+  transition: .5s ease-in-out;
+}
+
+.metadata .tick svg:first-child {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-transform: perspective(800px) rotateY(180deg);
+          transform: perspective(800px) rotateY(180deg);
+}
+
+.metadata .tick svg:last-child {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-transform: perspective(800px) rotateY(0deg);
+          transform: perspective(800px) rotateY(0deg);
+}
+
+.metadata .tick-animation svg:first-child {
+  -webkit-transform: perspective(800px) rotateY(0);
+          transform: perspective(800px) rotateY(0);
+}
+
+.metadata .tick-animation svg:last-child {
+  -webkit-transform: perspective(800px) rotateY(-179.9deg);
+transform: perspective(800px) rotateY(-179.9deg);
+}
+
+.message:first-child {
+  margin: 16px 0 8px;
+}
+
+.message.received {
+  background: #17202A ;
+  border-radius: 0px 5px 5px 5px;
+  float: left;
+}
+
+.message.received .metadata {
+  padding: 0 0 0 16px;
+}
+
+.message.received:after {
+  border-width: 0px 10px 10px 0;
+  border-color: transparent #17202A transparent transparent;
+  top: 0;left: -10px;
+}
+
+.message.sent {
+  background: #17202A ;
+  border-radius: 5px 0px 5px 5px;
+  float: right;
+}
+
+.message.sent:after {
+  border-width: 0px 0 10px 10px;
+  border-color: transparent transparent transparent #17202A ;
+  top: 0;
+  right: -10px;
+}
+
+
+.conversation-compose {
+  display: flex;
+  flex-direction: row;
+align-items: flex-end;
+  overflow: hidden;
+  height: 50px;
+  width: 100%;
+  z-index: 2;
+}
+
+.conversation-compose div,
+.conversation-compose input {
+  background: #17202A ;
+  color:white;
+  height: 100%;
+}
+
+.conversation-compose .emoji {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #17202A ;
+  border-radius: 5px 0 0 5px;
+  flex: 0 0 auto;
+  margin-left: 8px;
+  width: 48px; 
+}
+
+.conversation-compose .input-msg {
+  border:0;
+  flex: 1 1 auto;
+  font-size: 16px;
+  margin: 0;
+  outline: none;
+  min-width: 50px;
+}
+
+
+.conversation-compose .send {
+  background: transparent;
+  border: 0;
+cursor: pointer;
+  flex: 0 0 auto;
+  margin-left: 8px;
+  margin-right: 8px;
+  padding: 0;
+  position: relative;
+  outline: none;
+}
+
+.conversation-compose .send .circle {
+  background: #008a7c;
+  border-radius: 50%;
+  color: #fff;
+  position: relative;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.conversation-compose .send .circle i {
+  font-size: 24px;
+  margin-left: 5px;
+}
+
+
+
+  .marvel-device .status-bar {
+    display: none;
+  }
+
+  .screen-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .conversation {
+    height: calc(100vh - 55px);
+  }
+  .conversation .conversation-container {
+    height: calc(100vh - 120px);
+  }
+
+.forword{
+    font-size:30px;
+    float:right;
+}
+
+/* ===================== Global Styles ===================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fafafa;
+  background-image: url('https://img.freepik.com/premium-vector/abstract-yellow-blue-background-diagonal-papercut-line_464385-287.jpg');
+  background-size: cover; /* Ensures the image covers the screen */
+  color: #333;
+  padding-bottom: 880px; /* Add space at the bottom to prevent content from being hidden under the navbar */
+}
+
+/* Navbar Styles */
+.navbar {
+  background-color: #2e2e2e; /* Dark gray background */
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.navbar h1 {
+  font-size: 24px; /* Smaller font size for mobile */
+  margin: 0;
+  color: orange; /* Green color for Agrimate title */
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column; /* Stack user info vertically on smaller screens */
+  align-items: flex-end;
+  font-size: 18px; /* Reduce font size for better fit */
+}
+
+.user-info span {
+  margin-right: 0; /* No horizontal margin needed for vertical layout */
+  color: #f0f0f0; /* Light gray for the text */
+}
+
+#user-name {
+  font-weight: bold;
+  color: #00ff00; /* Green for the user name */
+}
+
+.logout-btn {
+  background-color: #ff4d4d; /* Red button */
+  color: white;
+  border: none;
+  padding: 8px 12px; /* Adjusted padding for smaller screens */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px; /* Reduced font size */
+  transition: background 0.3s ease;
+}
+
+.logout-btn:hover {
+  background-color: #ff1a1a; /* Darker red on hover */
+}
+
+/* ===================== Media Queries ===================== */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column; /* Stack navbar items vertically */
+    align-items: flex-start;
+  }
+
+  .navbar h1 {
+    font-size: 20px; /* Further reduce font size */
+  }
+
+  .user-info {
+    align-items: flex-start; /* Align user info to the left */
+    font-size: 16px;
+  }
+
+  .logout-btn {
+    font-size: 12px; /* Smaller button text */
+    padding: 6px 10px;
+  }
+
+  body {
+    padding-bottom: 600px; /* Adjust bottom padding for smaller screen */
+  }
+}
+
+
+/* ===================== Home Page Styles ===================== */
+#home-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Navbar Styles */
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: #28a745;
+  background-image: url('https://img.freepik.com/premium-vector/minimal-geometric-gradient-background-abstract-dynamic-shapes-composition-use-presentation_41901-2129.jpg');
+  background-size: cover; /* Ensures the image covers the entire navbar */
+  background-position: center; /* Centers the image */
+  color: white;
+  min-height: 110px; /* Ensures the navbar is tall enough to show the image */
+}
+
+/* Heading with Animation */
+.navbar h1 {
+  font-family: "Futura", sans-serif;
+  font-size: 45px;
+  font-weight: bold;
+  margin: 0;
+  color: white;
+  animation: colorchange 20s infinite alternate;
+}
+
+/* User Info Styles */
+.user-info {
+  font-size: 18px;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+/* Color Change Animation */
+@keyframes colorchange {
+  0% { color: blue; }
+  10% { color: #39FF14; }
+  20% { color: #FF007F; }
+  30% { color: #FFFF00; }
+  40% { color: #8A2BE2; }
+  50% { color: #00FFFF; }
+  60% { color: #FF5F00; }
+  70% { color: #FFFFFF; }
+  80% { color: #FF0000; }
+  90% { color: #2980b9; }
+  100% { color: pink; }
+}
+
+/* Media Query for Smaller Screens */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .navbar h1 {
+    font-size: 35px;
+  }
+
+  .user-info {
+    margin-top: 10px;
+    font-size: 16px;
+  }
+}
+
+
+
+.user-info span {
+  margin-right: 10px;
+  font-size: 1rem;
+}
+
+
+
+/* Welcome Section */
+.welcome-section {
+  text-align: center;
+  padding: 25px;
+  background: #28a745;
+  background-image: url('https://img.freepik.com/premium-vector/abstract-colorful-geometric-lines-background_1419-1619.jpg');
+  color: green;
+  animation: scaleDownVerCenter 1s ease-out; /* Add animation */
+ 
+}
+
+/* Scale-down-vertical-center animation */
+@keyframes scaleDownVerCenter {
+  0% {
+    transform: scale(1.5); /* Start scaled up */
+    opacity: 0; /* Start with hidden content */
+    transform-origin: center; /* Ensure scaling is centered */
+  }
+  50% {
+    transform: scale(1.05); /* Slightly scaled up at the middle */
+    opacity: 1; /* Fully visible */
+  }
+  100% {
+    transform: scale(1); /* End at normal size */
+    opacity: 1; /* Ensure it's fully visible */
+  }
+}
+
+/* Welcome Section Heading */
+.welcome-section h2 {
+  font-size: 25em;
+  margin-bottom: 10px;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 900;
+}
+
+.welcome-section p {
+  font-size: 1.3rem;
+}
+/* Welcome Section */
+.welcome-section {
+  text-align: center; 
+  padding: 25px;
+  background: #28a745;
+  background-image: url('https://img.freepik.com/free-vector/gradient-grainy-texture_23-2148983372.jpg');
+  color: green;
+  animation: bounceIn 1s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Apply bounce animation */
+}
+
+/* Bounce-in animation */
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.5); /* Start with a smaller size */
+    opacity: 0; /* Start hidden */
+  }
+  40% {
+    transform: scale(1.2); /* Scale slightly larger */
+    opacity: 1; /* Make content visible */
+  }
+  60% {
+    transform: scale(0.9); /* Shrink a bit */
+  }
+  80% {
+    transform: scale(1.05); /* Scale slightly larger again */
+  }
+  100% {
+    transform: scale(1); /* End at normal size */
+  }
+}
+
+/* Welcome Section Heading */
+.welcome-section h2 {
+  font-size: 3.1em;
+  margin-bottom: 10px;
+}
+
+.welcome-section p {
+  font-size: 1.3rem;
+}
+/* ===================== Media Queries ===================== */
+@media (max-width: 768px) {
+  /* Navbar Adjustments */
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .navbar h1 {
+    font-size: 35px;
+  }
+
+  .user-info {
+    margin-top: 10px;
+    font-size: 16px;
+    flex-direction: column; /* Stack user info */
+    align-items: flex-start; /* Align left */
+  }
+
+  /* Welcome Section Adjustments */
+  .welcome-section h2 {
+    font-size: 2em; /* Smaller font size for mobile */
+  }
+
+  .welcome-section p {
+    font-size: 1rem; /* Adjust paragraph size */
+  }
+
+  .welcome-section {
+    padding: 15px; /* Reduce padding */
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar h1 {
+    font-size: 28px; /* Further reduce font size */
+  }
+
+  .user-info {
+    font-size: 14px; /* Smaller text for very small screens */
+  }
+
+  .welcome-section h2 {
+    font-size: 1.8em; /* Further reduce heading size */
+  }
+
+  .welcome-section p {
+    font-size: 0.9rem; /* Smaller paragraph text */
+  }
+}
+
+/* ===================== Features Section ===================== */
+.features {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping of feature cards */
+  justify-content: space-between;
+  gap: 30px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 100px; /* Ensure the features section doesn't get hidden behind the navbar */
+}
+
+/* Bounce-in Animation for Feature Cards */
+@keyframes bounceInCard {
+  0% {
+    transform: scale(0.5) translateY(30px); /* Start scaled down and slightly translated */
+    opacity: 0; /* Hidden at the start */
+  }
+  60% {
+    transform: scale(1.05) translateY(-10px); /* Grow slightly larger and move up */
+    opacity: 1; /* Fully visible */
+  }
+  100% {
+    transform: scale(1) translateY(0); /* End at normal size and in the original position */
+  }
+}
+
+/* Feature Card Styles */
+.feature-card {
+  background: white;
+  background-image: url('https://img.freepik.com/free-vector/colorful-round-modern-background_53876-118047.jpg');
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 30%; /* Each feature card takes up 30% of the width */
+  transition: transform 0.3s, box-shadow 0.3s;
+  animation: bounceInCard 1s ease-out forwards; /* Apply the bounce-in animation */
+}
+
+/* Hover Effect for Feature Cards */
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Feature Icon */
+.feature-icon {
+  font-size: 3rem; /* Adjust icon size */
+  color: #28a745;  /* Icon color */
+  margin-bottom: 10px;
+}
+
+/* Feature Card Text */
+.feature-card p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* Feature Card Button */
+.feature-card button {
+  padding: 8px 80px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.feature-card button:hover {
+  background: #218838;
+}
+
+/* Specific styles for Feature 4 (Rainfall in mm), Feature 5 (Farmer News), and Feature 6 (Government Schemes) */
+
+/* Feature 4 (Rainfall in mm) */
+.feature-card#feature4 i {
+  font-size: 4rem; /* Adjust the icon size */
+  color: #28a745;
+}
+
+/* Feature 5 (Farmer News) */
+.feature-card#feature5 i {
+  font-size: 4rem; /* Adjust the icon size */
+  color: #28a745;
+}
+
+/* Feature 6 (Government Schemes) */
+.feature-card#feature6 i {
+  font-size: 4rem; /* Adjust the icon size */
+  color: #28a745;
+}
+/* Media Query for Mobile Screens */
+@media (max-width: 768px) {
+  .feature-card {
+    width: 45%; /* Reduce width for better fit */
+    padding: 15px; /* Adjust padding */
+  }
+
+  .features {
+    gap: 15px; /* Reduce gap between cards */
+  }
+
+  .feature-card button {
+    padding: 8px 60px; /* Adjust button size */
+  }
+}
+
+@media (max-width: 480px) {
+  .feature-card {
+    width: 100%; /* Stack cards on very small screens */
+    padding: 15px; /* Adjust padding */
+  }
+
+  .feature-card button {
+    padding: 8px 40px; /* Further reduce button size */
+  }
+
+  .feature-card p {
+    font-size: 1rem; /* Smaller text for better readability */
+  }
+
+  .feature-icon {
+    font-size: 2.5rem; /* Reduce icon size */
+  }
+}
+
+/* Specific styles for Feature 4 (Rainfall in mm), Feature 5 (Farmer News), and Feature 6 (Government Schemes) */
+
+/* Feature 4 (Rainfall in mm) */
+.feature-card#feature4 i {
+  font-size: 4rem; /* Adjust the icon size */
+  color: #28a745;
+}
+
+/* Feature 5 (Farmer News) */
+.feature-card#feature5 i {
+  font-size: 4rem; /* Adjust the icon size */
+  color: #28a745;
+}
+
+/* Feature 6 (Government Schemes) */
+.feature-card#feature6 i {
+  font-size: 4rem; /* Adjust the icon size */
+  color: #28a745;
+}
+
+/* ===================== Market Section Styles ===================== */
+.market {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+}
+
+.market-column {
+  background: white;
+  background-image:url('https://img.freepik.com/free-vector/technology-wire-mesh-network-connection-digital-background_1017-28407.jpg');
+  padding: 20px;
+  border-radius: 8px;
+  width: 48%; /* Each column takes up 48% of the width */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.market-column h3 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.market-column p {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.market-column button {
+  padding: 8px 15px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.market-column button:hover {
+  background: #218838;
+}
+
+/* ===================== Bottom Navigation Bar ===================== */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  background-image: url('https://img.freepik.com/free-vector/man-checking-plot-land-sale-sell-field-scene_107791-18872.jpg');
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.2);
+  z-index: 999; /* Ensures the navigation is above other content */
+}
+
+.bottom-nav ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+}
+
+.bottom-nav li {
+  text-align: center;
+  flex: 1;
+}
+
+/* Styling for each bottom nav link */
+.bottom-nav a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1.6rem; /* Increased font size for better visibility */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition: all 0.3s ease;
+  padding: 10px;
+}
+
+
+/* Add a circle or square around the icon */
+.bottom-nav .home-btn,
+.bottom-nav .other-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px;
+  background-color: #28a745; /* Green background */
+  border-radius: 50%; /* Circle shape */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  transition: all 0.3s ease-in-out; /* Animation effect */
+}
+
+/* Hover effect for button */
+.bottom-nav .home-btn:hover,
+.bottom-nav .other-btn:hover {
+  background-color: #218838; /* Darker green on hover */
+  transform: scale(1.2); /* Slightly enlarge the button on hover */
+}
+
+/* Add effect to the icon inside */
+.bottom-nav .home-btn i,
+.bottom-nav .other-btn i {
+  font-size: 2.5rem; /* Icon size */
+  color: white;
+}
+
+.bottom-nav span {
+  font-size: .85rem;
+  margin-top: 5px;
+  color: #333;
+  display: block; /* Ensures text is below the icon */
+  text-align: center;
+  margin-top: 5px; /* Space between the icon and text */
+}
+
+/* Active state for Home button */
+.bottom-nav .home-btn.active {
+  background-color: #218838; /* Darker green for active state */
+  transform: scale(1.1); /* Enlarge the button */
+}
+
+/* Active state for other buttons */
+.bottom-nav .other-btn.active {
+  background-color: #218838; /* Darker green for active state */
+  transform: scale(1.1); /* Enlarge the button */
+}
+
+.bottom-nav i {
+  font-size: 2.5rem;
+  margin-bottom: 5px;
+}
+
+.bottom-nav a:hover {
+  color: #28a745; /* Change text color on hover */
+}
+
+
+/* ===================== Bottom Navigation Bar ===================== */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  background-image: url('https://img.freepik.com/premium-vector/trendy-geometric-blue-background-with-abstract-dynamic-shapes-banner-design-futuristic-pattern-vector-illustration_515038-5107.jpg');
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.2);
+  z-index: 999; /* Ensures the navigation is above other content */
+}
+
+.bottom-nav ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+}
+
+.bottom-nav li {
+  text-align: center;
+  flex: 1;
+}
+
+/* Styling for each bottom nav link */
+.bottom-nav a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1.6rem; /* Increased font size for better visibility */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition: all 0.3s ease;
+  padding: 10px;
+}
+
+
+/* Add a circle or square around the icon */
+.bottom-nav .home-btn,
+.bottom-nav .other-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px;
+  background-color: #28a745; /* Green background */
+  border-radius: 50%; /* Circle shape */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  transition: all 0.3s ease-in-out; /* Animation effect */
+}
+
+/* Hover effect for button */
+.bottom-nav .home-btn:hover,
+.bottom-nav .other-btn:hover {
+  background-color: #218838; /* Darker green on hover */
+  transform: scale(1.2); /* Slightly enlarge the button on hover */
+}
+
+/* Add effect to the icon inside */
+.bottom-nav .home-btn i,
+.bottom-nav .other-btn i {
+  font-size: 2.5rem; /* Icon size */
+  color: white;
+}
+
+.bottom-nav span {
+  font-size: 0.85rem;
+  margin-top: 5px;
+  color: #333;
+  display: block; /* Ensures text is below the icon */
+  text-align: center;
+  margin-top: 5px; /* Space between the icon and text */
+}
+
+/* Active state for Home button */
+.bottom-nav .home-btn.active {
+  background-color: #218838; /* Darker green for active state */
+  transform: scale(1.1); /* Enlarge the button */
+}
+
+/* Active state for other buttons */
+.bottom-nav .other-btn.active {
+  background-color: #218838; /* Darker green for active state */
+  transform: scale(1.1); /* Enlarge the button */
+}
+
+.bottom-nav i {
+  font-size: 2.5rem;
+  margin-bottom: 5px;
+}
+
+.bottom-nav a:hover {
+  color: #28a745; /* Change text color on hover */
+}
+
+/* ===================== Additional Bottom Bar Styling ===================== */
+.bottom-nav {
+  background-image: url('https://img.freepik.com/premium-vector/trendy-geometric-blue-background-with-abstract-dynamic-shapes-banner-design-futuristic-pattern-vector-illustration_515038-5107.jpg');
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+}
+
+/* Hover Effects for Buttons */
+.bottom-nav a:hover {
+  color: #28a745;
+}
+
+.bottom-nav .home-btn:hover i,
+.bottom-nav .other-btn:hover i {
+  color: #fff; /* Ensures icon color changes on hover */
+}
+
+.feature-card:hover {
+  animation: bounce 0.6s ease-out; /* Apply bounce animation to feature card hover */
+}
+
+/* Bounce Animation for Feature Card */
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px); /* Moves up */
+  }
+  100% {
+    transform: translateY(0); /* Back to original position */
+  }
+}
+
+/* Apply the animation to the body */
+body {
+  animation: fadeInPage 1.5s ease-out;
+}
+
+/* Keyframes for fade-in */
+@keyframes fadeInPage {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .conversation-compose {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .conversation-compose .send .circle {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+
+.message {
+	display: block;
+	margin: 0.5em 0;
+	color: red;
+}
+
+#user-details {
+	margin: 1.5em 0;
+}
+
+#user-details > h2 {
+	text-align: center;
+	font-size: 2em;
+}
+
+#user-details-content {
+	margin: 1.5em 0;
+	padding: 1em;
+	border: 1px solid #ddd;
+	border-radius: 6px;
+	overflow: hidden;
+}
+
+#user-details-content .detail {
+	float: left;
+	width: 46%;
+}
+
+#user-details-content .detail.right {
+	float: right;
+}
+
+#user-details-content .detail > h2 {
+	text-align: center;
+	font-size: 1.6em;
+	margin-bottom: 0.5em;
+}
+
+#user-details-content ul {
+	margin: 0 0 1em 0;
+	padding: 0;
+	list-style: none;
+}
+
+#user-details-content li {
+	display: block;
+	margin-bottom: 0.5em;
+	padding-bottom: 0.3em;
+	border-bottom: 1px solid #ddd;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ box-sizing: border-box;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-image: url("https://thumbs.gfycat.com/TangibleBreakableFrillneckedlizard-size_restricted.gif");
+  padding:20px;
+
+  background:lightblube;
+   border-collapse: collapse;
+}
+
+
+.chat {
+  height: calc(100% - 69px);
+}
+
+.chat-container {
+  height: 100%;
+}
+
+
+
+.user-bar:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.user-bar div {
+  float: left;
+  transform: translateY(-50%);
+  position: relative;
+  top: 50%;
+}
+
+
+
+
+.user-bar .status {
+  display: block;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0;
+  width:auto;
+}
+
+.conversation {
+  height: calc(100% - 12px);
+  position: relative;
+    background-image: url("https://i.gifer.com/7LP8.gif");
+  background-color: #cccccc;
+  background-size: cover;
+    background-attachment:fixed;
+    margin: 0;
+    padding: 0;
+    height:100%;
+    width:100%;
+ font-style:oblique;
+   from {top: 0px;}
+    to {top: 200px;}
+  z-index: 0;
+  
+}
+
+.conversation ::-webkit-scrollbar {
+  transition: all .5s;
+  width: 5px;
+  height: 1px;
+  z-index: 10;
+}
+
+.conversation ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.conversation ::-webkit-scrollbar-thumb {
+  background: #b3ada7;
+}
+
+.conversation .conversation-container {
+  height: calc(100% - 68px);
+  box-shadow: inset 0 10px 10px -10px #FFFFFF;
+  overflow-x: hidden;
+  padding: 0 16px;
+  margin-bottom: 5px;
+  
+}
+
+.conversation .conversation-container:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.message {
+  color: #FFFFFF;
+clear: both;
+  line-height: 18px;
+  font-size: 15px;
+  padding: 8px;
+  position: relative;
+  margin: 8px 0;
+  max-width: 80%;
+  word-wrap: break-word;
+
+
+}
+.message:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.metadata {
+  display: inline-block;
+  float: right;
+  padding: 0 0 0 7px;
+  position: relative;
+  bottom: -4px;
+}
+.metadata .time {
+  color: rgba(0, 0, 0, .45);
+  font-size: 11px;
+  display: inline-block;
+  color:gray;
+}
+
+.metadata .tick {
+  display: inline-block;
+  margin-left: 2px;
+  position: relative;
+  top: 4px;
+  height: 16px;
+  width: 16px;
+}
+
+.metadata .tick svg {
+  position: absolute;
+  transition: .5s ease-in-out;
+}
+
+.metadata .tick svg:first-child {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-transform: perspective(800px) rotateY(180deg);
+          transform: perspective(800px) rotateY(180deg);
+}
+
+.metadata .tick svg:last-child {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-transform: perspective(800px) rotateY(0deg);
+          transform: perspective(800px) rotateY(0deg);
+}
+
+.metadata .tick-animation svg:first-child {
+  -webkit-transform: perspective(800px) rotateY(0);
+          transform: perspective(800px) rotateY(0);
+}
+
+.metadata .tick-animation svg:last-child {
+  -webkit-transform: perspective(800px) rotateY(-179.9deg);
+transform: perspective(800px) rotateY(-179.9deg);
+}
+
+.message:first-child {
+  margin: 16px 0 8px;
+}
+
+.message.received {
+  background: #17202A ;
+  border-radius: 0px 5px 5px 5px;
+  float: left;
+}
+
+.message.received .metadata {
+  padding: 0 0 0 16px;
+}
+
+.message.received:after {
+  border-width: 0px 10px 10px 0;
+  border-color: transparent #17202A transparent transparent;
+  top: 0;left: -10px;
+}
+
+.message.sent {
+  background: #17202A ;
+  border-radius: 5px 0px 5px 5px;
+  float: right;
+}
+
+.message.sent:after {
+  border-width: 0px 0 10px 10px;
+  border-color: transparent transparent transparent #17202A ;
+  top: 0;
+  right: -10px;
+}
+
+
+.conversation-compose {
+  display: flex;
+  flex-direction: row;
+align-items: flex-end;
+  overflow: hidden;
+  height: 50px;
+  width: 100%;
+  z-index: 2;
+}
+
+.conversation-compose div,
+.conversation-compose input {
+  background: #17202A ;
+  color:white;
+  height: 100%;
+}
+
+.conversation-compose .emoji {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #17202A ;
+  border-radius: 5px 0 0 5px;
+  flex: 0 0 auto;
+  margin-left: 8px;
+  width: 48px; 
+}
+
+.conversation-compose .input-msg {
+  border:0;
+  flex: 1 1 auto;
+  font-size: 16px;
+  margin: 0;
+  outline: none;
+  min-width: 50px;
+}
+
+
+.conversation-compose .send {
+  background: transparent;
+  border: 0;
+cursor: pointer;
+  flex: 0 0 auto;
+  margin-left: 8px;
+  margin-right: 8px;
+  padding: 0;
+  position: relative;
+  outline: none;
+}
+
+.conversation-compose .send .circle {
+  background: #008a7c;
+  border-radius: 50%;
+  color: #fff;
+  position: relative;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.conversation-compose .send .circle i {
+  font-size: 24px;
+  margin-left: 5px;
+}
+
+
+
+  .marvel-device .status-bar {
+    display: none;
+  }
+
+  .screen-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .conversation {
+    height: calc(100vh - 55px);
+  }
+  .conversation .conversation-container {
+    height: calc(100vh - 120px);
+  }
+
+.forword{
+    font-size:30px;
+    float:right;
+}                                                                                                                                                        $(function() {
+var smsg="Hi";
