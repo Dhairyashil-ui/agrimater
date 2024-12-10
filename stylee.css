@@ -1,0 +1,108 @@
+*{
+    padding: 0;
+    margin: 0;
+	font-family: sans-serif;
+}
+body{
+    background: black;
+
+}
+.container
+{
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+}
+.container span{
+    color: green;
+    /* text-transform: capitalize; */
+    display: block;
+}
+.text1
+{
+    font-size: 70px;
+    font-weight: 700;
+    letter-spacing: 8px;
+    margin-bottom: 20px;
+    background: black;
+    position: relative;
+    animation: text 3s 1;
+    text-transform: uppercase;
+    text-shadow: 4px 3px 4px white;
+}
+/* span
+{
+    animation: color 2s infinite;
+}
+@keyframes color{
+    0%{
+        color: white;
+    }
+    50%{
+        color: blue;
+    }
+} */
+.text2
+{
+  
+  
+    font-size: 30px;
+    color: green;
+    text-transform: capitalize;
+    text-shadow: 2px 1px 2px white;
+
+}
+@keyframes text{
+    0%{
+        color: black;
+        margin-bottom: -40px;
+    }
+    30%{
+        letter-spacing: 25px;
+        margin-bottom: -40px;
+        text-shadow: 4px 3px 4px aqua;
+    }
+  
+    80%{
+        letter-spacing: 8px;
+        margin-bottom: -40px;
+        color: red;
+        transition: 0.1s ease-in-out;
+    }
+}
+
+
+/* For medium screens */
+@media (max-width: 768px) {
+    .text1 {
+        font-size: 50px; /* Reduce text size */
+        letter-spacing: 5px;
+    }
+
+    .text2 {
+        font-size: 25px;
+    }
+
+    .container {
+        width: 90%;  /* Make container width more flexible */
+    }
+}
+
+/* For small screens (phones in portrait mode) */
+@media (max-width: 480px) {
+    .text1 {
+        font-size: 35px; /* Further reduce font size */
+        letter-spacing: 2px;
+    }
+
+    .text2 {
+        font-size: 20px;
+    }
+
+    .container {
+        width: 100%;  /* Ensure container takes up full width */
+    }
+}
