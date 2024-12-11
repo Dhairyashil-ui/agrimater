@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Agrimater</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body id="home-page">
+
+  <!-- Navbar Section -->
+  <header class="navbar">
+    <h1>Agrimater</h1>
+    <div class="user-info">
+ <span>Welcome, <span id="user-name"></span></span>
+
+    </div>
+  </header>
+
+  <!-- Welcome Section -->
+  <section class="welcome-section">
+    <h2>Welcome to Agrimater</h2>
+    <p>Your trusted app for farming solutions.</p>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <!-- Feature 1: Temperature -->
+    <div class="feature-card" id="feature1">
+      <i class="fas fa-thermometer-half feature-icon"></i>
+      <p id="location-temp">Temperature will appear here.</p>
+      <button onclick="showTemperature()">View Temperature</button>
+    </div>
+
+    <!-- Feature 2: Humidity -->
+    <div class="feature-card" id="feature2">
+      <i class="fas fa-tint feature-icon"></i>
+      <p id="location-humidity">Humidity in % will appear here</p>
+      <button onclick="showHumidity()">View Humidity</button>
+    </div>
+
+    <!-- Feature 3: Percentage Chance of Rainfall -->
+    <div class="feature-card" id="feature3">
+      <i class="fas fa-cloud-rain feature-icon"></i>
+      <p id="rain-chance">Rain chance will appear here.</p>
+      <button onclick="showRainChance()">View Rain Chances</button>
+    </div>
+
+    <!-- Feature 4: Amount of Rainfall in mm -->
+    <div class="feature-card" id="feature4">
+      <i class="fas fa-cloud-showers-heavy feature-icon"></i>
+      <p id="rainfall-amount">Rainfall amount will appear here.</p>
+      <button onclick="showRainfall()">View Rainfall</button>
+    </div>
+
+    <!-- Feature 5: Farmer News -->
+    <div class="feature-card" id="feature5">
+      <i class="fas fa-newspaper feature-icon"></i>
+      <p>Stay updated with the latest news on farming.</p>
+      <button onclick="window.open('https://www.agriculture.com/news')">Read News</button>
+    </div>
+
+    <!-- Feature 6: Government Schemes -->
+    <div class="feature-card" id="feature6">
+      <i class="fas fa-gavel feature-icon"></i>
+      <p>Learn about the latest Government schemes.</p>
+      <button onclick="window.open('https://www.india.gov.in/my-government/schemes-0')">Explore Schemes</button>
+    </div>
+  </section>
+
+  <!-- Bottom Navigation Bar -->
+  <div class="bottom-nav">
+    <ul>
+      <li>
+        <a href="index.html" class="home-btn active">
+          <i class="fas fa-home"></i>
+        </a>
+        <span>Home</span>
+      </li>
+      
+      <li>
+        <a href="https://www.farmersstop.com/?srsltid=AfmBOoofAds7fW5PJb7aS9bdj6dSQry-XTp5yqpSMwVvoJCIbn5p4qKA" target="_self" class="other-btn">
+          <i class="fas fa-shopping-cart"></i>
+        </a>
+        <span>Shopping</span>
+      </li>
+
+      
+      
+      <li>
+        <a href="premarket.html" class="other-btn">
+          <i class="fas fa-chart-line"></i>
+        </a>
+        <span>AgriMart</span>
+      </li>
+      
+      <li>
+        <a href="chatbot.html" class="other-btn">
+          <i class="fas fa-comments"></i>
+        </a>
+        <span>AI Chatbot</span>
+      </li>
+      
+      <li>
+        <a href="https://epaper-lokmat-com.translate.goog/?_x_tr_sl=mr&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=sc" target="_blank" class="other-btn">
+          <i class="fas fa-calendar-alt"></i>
+        </a>
+        <span>Bulletin</span>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    // Retrieve user name and location from localStorage
+    var userName = localStorage.getItem('userName');
+    var userLocation = localStorage.getItem('userLocation');
+
+    
+    // Display user name in navbar
+    document.getElementById('user-name').textContent = userName;
+
+    // Function to fetch weather data based on user location
+    async function getWeather(location) {
+      const apiKey = 'c327afd15d91a7553f3979d25c628a86';  // Replace with your OpenWeatherMap API Key
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}&units=metric`;
+
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data.cod === 200) {
+          // Storing weather data in local variables for later use
+          const temperature = data.main.temp;
+          const humidity = data.main.humidity;
+          const rain = data.weather.find(condition => condition.main === "Rain");
+          const rainChance = rain ? 60 : 0;  // 60% chance if rain is in forecast
+          const rainfallAmount = data.rain ? data.rain["1h"] : 0;
+
+          // Storing the weather data in localStorage for later reference
+          localStorage.setItem('temperature', temperature);
+          localStorage.setItem('humidity', humidity);
+          localStorage.setItem('rainChance', rainChance);
+          localStorage.setItem('rainfallAmount', rainfallAmount);
+        } else {
+          alert('Error fetching weather data!');
+        }
+      } catch (error) {
+        console.error('Error fetching weather data:', error);
+        alert('Error fetching weather data!');
+      }
+    }
+
+    // Call the function with the user's location
+    if (userLocation) {
+      getWeather(userLocation);
+    } else {
+      alert('Location not provided.');
+    }
+
+    // Show temperature
+    function showTemperature() {
+      const temperature = localStorage.getItem('temperature');
+      document.getElementById('location-temp').textContent = `Temperature: ${temperature}°C`;
+    }
+
+    // Show humidity
+    function showHumidity() {
+      const humidity = localStorage.getItem('humidity');
+      document.getElementById('location-humidity').textContent = `Humidity: ${humidity}%`;
+    }
+
+    // Show chance of rain
+    function showRainChance() {
+      const rainChance = localStorage.getItem('rainChance');
+      document.getElementById('rain-chance').textContent = `Chance of Rain: ${rainChance}%`;
+    }
+
+    // Show rainfall amount
+    function showRainfall() {
+      const rainfallAmount = localStorage.getItem('rainfallAmount');
+      document.getElementById('rainfall-amount').textContent = `Rainfall Amount: ${rainfallAmount} mm`;
+    }
+  </script>
+
+</body>
+</html>
