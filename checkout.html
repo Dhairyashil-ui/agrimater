@@ -1,130 +1,318 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Checkout</title>
-<meta charset="utf-8" />
-<link rel="stylesheet" href="style.css" media="screen" type="text/css" />
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script type="text/javascript" src="js/jquery.store.js"></script>
-<script type="text/javascript"
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+<style>
+        /* General Reset and Body Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fa;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            background: linear-gradient(45deg, #4CAF50, #388E3C);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 2.5em;
+        }
+
+        #site {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px;
+            background: #fff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .shopping-cart {
+            width: 100%;
+            margin-bottom: 30px;
+            border-collapse: collapse;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #f9f9f9;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            font-size: 1.1em;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        td {
+            background-color: #fff;
+        }
+
+        #pricing {
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        #pricing p {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        #checkout-order-form {
+            margin-top: 20px;
+        }
+
+        #checkout-order-form h2 {
+            font-size: 1.8em;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        fieldset {
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        legend {
+            font-size: 1.3em;
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+
+        label {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            display: inline-block;
+            color: #333;
+        }
+
+        input[type="text"], input[type="email"], select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus, input[type="email"]:focus, select:focus {
+            border-color: #4CAF50;
+        }
+
+        /* Button Styling */
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #388E3C;
+        }
+
+        #shipping-same {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            font-size: 1.2em;
+            margin-top: 40px;
+            border-radius: 10px;
+        }
+
+    </style>
 </head>
+<body>
+    <div id="site">
+        <h1>Checkout</h1>
 
-<body id="checkout-page">
+        <table id="checkout-cart" class="shopping-cart">
+            <tbody id="cart-items">
+                <!-- Cart items will be inserted here -->
+            </tbody>
+        </table>
 
-<div id="site">
-	<header id="masthead">
-	</header>
-	<div id="content">
-		<h1>Checkout</h1>
-			<table id="checkout-cart" class="shopping-cart">
-			  <thead>
-				<tr>
-					<th scope="col">Item</th>
-					<th scope="col">Qty</th>
-					<th scope="col">Price</th>
-				</tr>
-			  </thead>
-			  <tbody>
-			  
-			  </tbody>
-			</table>
-		 <div id="pricing">
-			
-			<p id="shipping">
-				<strong>Shipping</strong>: <span id="sshipping"></span>
-			</p>
-			
-			<p id="sub-total">
-				<strong>Total</strong>: <span id="stotal"></span>
-			</p>
-		 </div>
-		 
-		 <form action="order.html" id="checkout-order-form">
-		 	<h2>Your Details</h2>
-		 	
-		 	<fieldset id="fieldset-billing">
-		 		<legend>Billing</legend>
-		 		<div>
-		 			<label for="name">Name</label>
-		 			<input type="text" name="name" id="name" data-type="string" data-message="This field cannot be empty" />
-		 		</div>
-		 		<div>
-		 			<label for="email">Email</label>
-		 			<input type="text" name="email" id="email" data-type="string" data-message="Not a valid email address" />
-		 		</div>
-		 		<div>
-		 			<label for="city">City</label>
-		 			<input type="text" name="city" id="city" data-type="string" data-message="This field cannot be empty" />
-		 		</div>
-		 		<div>
-		 			<label for="address">Address</label>
-		 			<input type="text" name="address" id="address" data-type="string" data-message="This field cannot be empty" />
-		 		</div>
-		 		<div>
-		 			<label for="zip">ZIP Code</label>
-		 			<input type="text" name="zip" id="zip" data-type="string" data-message="This field cannot be empty" />
-		 		</div>
-		 		<div>
-		 			<label for="country">Country</label>
-		 			<select name="country" id="country" data-type="string" data-message="This field cannot be empty">
-		 				<option value="">Select</option>
-		 				<option value="De">Denmark</option>
-		 				<option value="IN">India</option>
-		 			</select>
-		 		</div>
-		 	</fieldset>
-		 	
-		 	<div id="shipping-same">Same as Billing <input type="checkbox" id="same-as-billing" value=""/></div>
-		 	
-		 	<fieldset id="fieldset-shipping">
-		 		
-		 		<legend>Shipping</legend>
-		 		
-		 		<div>
-		 			<label for="sname">Name</label>
-		 			<input type="text" name="sname" id="sname" data-type="string" data-message="This field cannot be empty" />
-		 		</div>
-		 		<div>
-		 			<label for="semail">Email</label>
-		 			<input type="text" name="semail" id="semail" data-type="expression" data-message="Not a valid email address" />
-		 		</div>
-		 		<div>
-		 			<label for="scity">City</label>
-		 			<input type="text" name="scity" id="scity" data-type="string" data-message="This field cannot be empty" />
-		 		</div>
-		 		<div>
-		 			<label for="saddress">Address</label>
-		 			<input type="text" name="saddress" id="saddress" data-type="string" data-message="This field cannot be empty" />
-		 		</div>
-		 		<div>
-		 			<label for="szip">ZIP Code</label>
-		 			<input type="text" name="szip" id="szip" data-type="string" data-message="This field cannot be empty" />
-		 		</div>
-		 		<div>
-		 			<label for="scountry">Country</label>
-		 			<select name="scountry" id="scountry" data-type="string" data-message="This field cannot be empty">
-		 				<option value="">Select</option>
-		 				<option value="De">Denmark</option>
-		 				<option value="IN">India</option>
-		 			</select>
-		 		</div>
-		 	</fieldset>
-		 	
-		 	<p><input type="submit" id="submit-order" value="Submit" class="btn" /></p>
-		 
-		 </form>
-	</div>
-	
-	
+        <div id="pricing">
+            <p id="shipping"><strong>Shipping</strong>: <span id="sshipping">Calculated at checkout</span></p>
+        </div>
 
-</div>
+        <form id="checkout-order-form">
+            <h2>Your Details</h2>
+            <fieldset id="fieldset-billing">
+                <legend>Billing</legend>
+                <div>
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" required />
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" required />
+                </div>
+                <div>
+                    <label for="city">City</label>
+                    <input type="text" name="city" id="city" required />
+                </div>
+                <div>
+                    <label for="address">Address</label>
+                    <input type="text" name="address" id="address" required />
+                </div>
+                <div>
+                    <label for="zip">ZIP Code</label>
+                    <input type="text" name="zip" id="zip" required />
+                </div>
+                <div>
+                    <label for="country">Country</label>
+                    <select name="country" id="country" required>
+                        <option value="">Select</option>
+                        <option value="De">Denmark</option>
+                        <option value="IN">India</option>
+                    </select>
+                </div>
+            </fieldset>
 
-<footer id="site-info">
-		Copyright &copy; FarmEasy 2021 <br> Made with &#10084;&#65039; By Dhairyashil Shinde
-	</footer>
+            <div id="shipping-same">
+                Same as Billing <input type="checkbox" id="same-as-billing" />
+            </div>
 
+            <fieldset id="fieldset-shipping">
+                <legend>Shipping</legend>
+                <div>
+                    <label for="sname">Name</label>
+                    <input type="text" name="sname" id="sname" />
+                </div>
+                <div>
+                    <label for="semail">Email</label>
+                    <input type="email" name="semail" id="semail" />
+                </div>
+                <div>
+                    <label for="scity">City</label>
+                    <input type="text" name="scity" id="scity" />
+                </div>
+                <div>
+                    <label for="saddress">Address</label>
+                    <input type="text" name="saddress" id="saddress" />
+                </div>
+                <div>
+                    <label for="szip">ZIP Code</label>
+                    <input type="text" name="szip" id="szip" />
+                </div>
+                <div>
+                    <label for="scountry">Country</label>
+                    <select name="scountry" id="scountry">
+                        <option value="">Select</option>
+                        <option value="De">Denmark</option>
+                        <option value="IN">India</option>
+                    </select>
+                </div>
+            </fieldset>
+
+            <p><input type="submit" id="submit-order" value="Submit Order" /></p>
+        </form>
+    </div>
+
+    <footer>
+        &copy; AgriMart 2024 | Made with &#10084;&#65039; By Dhairyashil Shinde
+    </footer>
+
+    <script>
+        // Fetch the cart data from localStorage
+        function getCart() {
+            return JSON.parse(localStorage.getItem('cart')) || [];
+        }
+
+        // Function to calculate and display the total
+        function updateTotal() {
+            let total = 0;
+            const cart = getCart();
+
+            cart.forEach(item => {
+                const price = parseFloat(item.price);  // Ensure price is a number
+                const qty = parseInt(item.qty, 10);    // Ensure qty is a number
+                if (!isNaN(price) && !isNaN(qty)) {
+                    total += price * qty;
+                }
+            });
+
+            document.getElementById('stotal').textContent = total.toFixed(2);
+            let shipping = 5;  // Flat rate shipping for this example
+            document.getElementById('sshipping').textContent = "$" + shipping.toFixed(2);
+        }
+
+        // Function to display cart items
+        function displayCart() {
+            const cart = getCart();
+            const cartItems = document.getElementById('cart-items');
+            cart.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>${item.qty}</td>
+                    <td>${item.price}</td>
+                    <td>${item.price * item.qty}</td>
+                `;
+                cartItems.appendChild(row);
+            });
+            updateTotal();  // Update the total once cart items are displayed
+        }
+
+        // Display the cart when the page loads
+        window.onload = displayCart;
+
+        // Form submission handling
+        document.getElementById('checkout-order-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get the user's name from the form
+            const userName = document.getElementById('name').value;
+
+            // Save user details to localStorage
+            const userDetails = {
+                name: userName,
+                email: document.getElementById('email').value,
+                city: document.getElementById('city').value,
+                address: document.getElementById('address').value,
+                zip: document.getElementById('zip').value,
+                country: document.getElementById('country').value
+            };
+
+            // Store user details in localStorage
+            localStorage.setItem('userDetails', JSON.stringify(userDetails));
+
+            // Redirect to ok.html
+            window.location.href = 'ok.html';
+        });
+    </script>
 </body>
-</html>	
-
-    
+</html>

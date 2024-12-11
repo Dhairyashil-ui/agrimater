@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Address Saved</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: linear-gradient(to right, #6a11cb, #2575fc);
+        }
+
+        /* Container with shadow and rounded corners */
+        .container {
+            text-align: center;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1.5s ease-out;
+            width: 80%;
+            max-width: 450px;
+        }
+
+        /* Title text styling */
+        h1 {
+            font-size: 30px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: bold;
+            animation: zoomIn 1s ease-out;
+        }
+
+        /* Message styling */
+        .message {
+            font-size: 22px;
+            margin: 20px 0;
+            opacity: 0;
+            animation: slideIn 1.5s ease-out forwards;
+        }
+
+        .message.success {
+            color: #4CAF50; /* Green color for success */
+        }
+
+        .message.error {
+            color: #F44336; /* Red color for error */
+        }
+
+        /* Slide-in animation for messages */
+        @keyframes slideIn {
+            0% {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Fade-in animation for the container */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Zoom-in animation for the title */
+        @keyframes zoomIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Button with hover effect */
+        .btn {
+            padding: 12px 30px;
+            background-color: #2575fc;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            margin-top: 30px;
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            background-color: #6a11cb;
+        }
+
+        .btn:active {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Thank You!</h1>
+    <div class="message success" id="addressMessage">Your Address is saved successfully.</div>
+    <div class="message error" id="stockMessage">Out of stock. Try after some time.</div>
+
+    <button class="btn" onclick="goToHome()">Go to Home</button>
+</div>
+
+<script>
+    // JavaScript function to redirect to home.html
+    function goToHome() {
+        window.location.href = "home.html"; // Redirects to home.html
+    }
+</script>
+
+</body>
+</html>
