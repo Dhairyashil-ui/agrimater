@@ -1,0 +1,107 @@
+/* Center the content vertically and horizontally */
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    background-image: url('https://img.freepik.com/premium-photo/white-cement-wall-texture-backgrounds_707519-24233.jpg');
+}
+
+/* Container for the buttons */
+.button-container {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 150px; /* Space between sections */
+    align-items: center; /* Center the buttons horizontally */
+}
+
+/* Row for the Buy and Sell buttons */
+.row {
+    display: flex;
+    gap: 70px; /* Space between buttons */
+}
+
+/* Styling for the BUY button */
+.buy-btn {
+    background-color: red;
+    color: white;
+    font-size: 30px;
+    padding: 80px 100px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: bounceIn 1s ease-out; /* Animation for entry */
+}
+
+.buy-btn:hover {
+    transform: scale(1.2); /* Hover effect */
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5); /* Glowing effect */
+}
+
+/* Styling for the SELL button */
+.sell-btn {
+    background-color: green;
+    color: white;
+    font-size: 30px;
+    padding: 80px 100px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: bounceIn 1s ease-out; /* Animation for entry */
+}
+
+.sell-btn:hover {
+    transform: scale(1.2); /* Hover effect */
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5); /* Glowing effect */
+}
+
+/* Styling for the DOWNLOAD button link */
+.download-btn-link {
+    display: inline-block;
+    background-color: blue;
+    color: white;
+    font-size: 30px;
+    padding: 60px 80px;
+    border: none;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none; /* Remove underline from link */
+}
+
+.download-btn-link:hover {
+    transform: scale(1.2); /* Hover effect */
+    box-shadow: 0 0 20px rgba(0, 0, 255, 0.5); /* Glowing effect */
+}
+
+/* Keyframe animation for a "bounce in" effect */
+@keyframes bounceIn {
+    0% {
+        transform: scale(0);
+    }
+    60% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Media query for smaller mobile screens (less than 720px wide) */
+@media (max-width: 720px) {
+    /* Reduce button size and padding for very small screens */
+    .buy-btn, .sell-btn, .download-btn-link {
+        font-size: 20px;
+        padding: 15px 30px;
+        width: 90%; /* Make buttons slightly larger on very small screens */
+    }
+
+    .button-container {
+        gap: 10px; /* Reduced gap between buttons on smaller screens */
+    }
+}
