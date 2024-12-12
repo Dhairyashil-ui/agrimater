@@ -406,7 +406,7 @@ body {
 
 @media (max-width: 400px) {
 	  body {
-    padding-bottom: 1000px; /* Adjust bottom padding for smaller screen */
+    padding-bottom: 500px; /* Adjust bottom padding for smaller screen */
   }
 }
 	
