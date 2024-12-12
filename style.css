@@ -377,7 +377,6 @@ body {
 .logout-btn:hover {
   background-color: #ff1a1a; /* Darker red on hover */
 }
-
 /* ===================== Media Queries ===================== */
 @media (max-width: 768px) {
   .navbar {
@@ -400,30 +399,15 @@ body {
   }
 
   body {
-    padding-bottom: 1000px; /* Adjust bottom padding for smaller screen */
+    padding-bottom: 5000px; /* Adjust bottom padding for smaller screen */
   }
 }
-
-@media (max-width: 400px) {
-  body {
-    height: 1200vh; /* Increase height to 120% of the viewport height */
-    padding-bottom: 50px; /* Adjust bottom padding for smaller screen */
-    overflow-y: auto; /* Allow scrolling if content overflows */
-  }
-
-  .navbar {
-    padding-top: 10px; /* Add some padding to the top of the navbar for better spacing */
-  }
-
-  .user-info {
-    font-size: 14px; /* Reduce font size further for small screens */
-  }
-
-  .logout-btn {
-    font-size: 10px; /* Make the logout button text smaller */
-    padding: 4px 8px; /* Adjust padding for a smaller button */
+@media (max-width: 768px) {
+        body {
+    padding-bottom: 1500px; /* Adjust bottom padding for smaller screen */
   }
 }
+	
 
 
 /* ===================== Home Page Styles ===================== */
