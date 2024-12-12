@@ -404,7 +404,12 @@ body {
   }
 }
 
-
+@media (max-width: 480px) {
+	  body {
+    padding-bottom: 5000px; /* Adjust bottom padding for smaller screen */
+  }
+}
+	
 
 /* ===================== Home Page Styles ===================== */
 #home-page {
