@@ -405,10 +405,26 @@ body {
 }
 
 @media (max-width: 400px) {
-	  body {
+  body {
     padding-bottom: 50px; /* Adjust bottom padding for smaller screen */
+    height: 100vh; /* Ensure the body takes the full height of the viewport */
+    overflow-y: auto; /* Allow scrolling if content overflows */
+  }
+
+  .navbar {
+    padding-top: 10px; /* Add some padding to the top of the navbar for better spacing */
+  }
+
+  .user-info {
+    font-size: 14px; /* Reduce font size further for small screens */
+  }
+
+  .logout-btn {
+    font-size: 10px; /* Make the logout button text smaller */
+    padding: 4px 8px; /* Adjust padding for a smaller button */
   }
 }
+
 	
 
 /* ===================== Home Page Styles ===================== */
