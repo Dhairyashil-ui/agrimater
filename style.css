@@ -400,13 +400,13 @@ body {
   }
 
   body {
-    padding-bottom: 1200px; /* Adjust bottom padding for smaller screen */
+    padding-bottom: 900px; /* Adjust bottom padding for smaller screen */
   }
 }
 
 @media (max-width: 400px) {
 	  body {
-    padding-bottom: 50px; /* Adjust bottom padding for smaller screen */
+    padding-bottom: 500px; /* Adjust bottom padding for smaller screen */
   }
 }
 	
