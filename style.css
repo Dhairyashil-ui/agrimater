@@ -399,7 +399,7 @@ body {
   }
 
   body {
-    padding-bottom: 300px; /* Adjust bottom padding for smaller screen */
+    padding-bottom: 10px; /* Adjust bottom padding for smaller screen */
   }
 }
 
