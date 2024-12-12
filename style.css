@@ -399,7 +399,8 @@ body {
   }
 
   body {
-    padding-bottom: 10px; /* Adjust bottom padding for smaller screen */
+    padding-bottom: 10px;
+    height: 100vh;/* Adjust bottom padding for smaller screen */
   }
 }
 
