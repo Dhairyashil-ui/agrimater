@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+            margin: 20px 0;
+            font-size: 2.5em;
+            animation: slideIn 1s ease-out;
+        }
+
+        #cart-container {
+            margin: 20px auto;
+            width: 80%;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeInUp 1s forwards;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            transition: all 0.3s ease-in-out;
+        }
+
+        th, td {
+            text-align: center;
+            padding: 12px;
+            border: 1px solid #ddd;
+            transition: all 0.3s ease-in-out;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1.2em;
+        }
+
+        td {
+            font-size: 1em;
+        }
+
+        .cart-empty {
+            text-align: center;
+            padding: 20px;
+            color: #757575;
+            font-size: 1.2em;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px;
+        }
+
+        .clear-cart {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            cursor: pointer;
+            font-size: 1.2em;
+            border-radius: 50px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            transform: scale(1);
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .clear-cart:hover {
+            background-color: #d32f2f;
+            transform: scale(1.1);
+        }
+
+        .checkout {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            cursor: pointer;
+            font-size: 1.2em;
+            border-radius: 50px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            animation: slideInRight 1s ease-out;
+        }
+
+        .checkout:hover {
+            background-color: #388E3C;
+            transform: scale(1.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            animation: slideUp 1s ease-out;
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            0% { transform: translateX(-50px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideInLeft {
+            0% { transform: translateX(-200px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideInRight {
+            0% { transform: translateX(200px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+		
+/* Media Query for devices smaller than 600px */
+@media (max-width: 720px) {
+    h1 {
+        font-size: 1.8em; /* Adjust heading size */
+    }
+
+    #cart-container {
+        width: 90%; /* Adjust cart container width */
+    }
+
+    table {
+        font-size: 0.9em; /* Adjust table font size */
+    }
+
+    th, td {
+        padding: 8px; /* Adjust padding */
+    }
+
+    .action-buttons {
+        gap: 8px; /* Adjust button gap */
+    }
+
+    .clear-cart, .checkout {
+        font-size: 1em; /* Adjust button font size */
+        padding: 12px 15px; /* Reduce button padding */
+    }
+}
+
+/* Media Query for devices smaller than 400px */
+@media (max-width: 400px) {
+    h1 {
+        font-size: 1.5em; /* Adjust heading size */
+    }
+
+    table {
+        font-size: 0.85em; /* Further reduce table font size */
+    }
+
+    th, td {
+        padding: 6px; /* Reduce padding further */
+    }
+
+    .clear-cart, .checkout {
+        font-size: 0.9em; /* Further reduce button font size */
+        padding: 10px 12px; /* Further reduce button padding */
+    }
+}
+    </style>
+</head>
+<body>
+    <h1>Your Cart</h1>
+    <div id="cart-container">
+        <table id="cart-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Cart items will be inserted here -->
+            </tbody>
+        </table>
+        <div class="action-buttons">
+            <button class="clear-cart">Clear Cart</button>
+            <button class="checkout">Checkout</button>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 AgriMart. All Rights Reserved By Dhairyashil Shinde
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartTable = document.querySelector('#cart-table tbody');
+
+            if (cart.length === 0) {
+                cartTable.innerHTML = '<tr><td colspan="4" class="cart-empty">Cart is empty</td></tr>';
+            } else {
+                let totalAmount = 0;
+
+                cart.forEach(item => {
+                    const row = document.createElement('tr');
+                    const totalPrice = item.price * item.quantity;
+                    totalAmount += totalPrice; // Add the total price of the item
+
+                    row.innerHTML = `
+                        <td>${item.name}</td>
+                        <td>&#8377; ${item.price}</td>
+                        <td>${item.quantity}</td>
+                        <td>&#8377; ${totalPrice}</td>
+                    `;
+                    cartTable.appendChild(row);
+                });
+
+                // Add the total amount below the cart items
+                const totalRow = document.createElement('tr');
+                totalRow.innerHTML = `
+                    <td colspan="3" style="text-align:right; font-weight:bold;">Total</td>
+                    <td>&#8377; ${totalAmount}</td>
+                `;
+                cartTable.appendChild(totalRow);
+            }
+
+            // Clear Cart Button Functionality
+            document.querySelector('.clear-cart').addEventListener('click', () => {
+                if (confirm('Are you sure you want to clear the cart?')) {
+                    localStorage.removeItem('cart');
+                    cartTable.innerHTML = '<tr><td colspan="4" class="cart-empty">Cart is empty</td></tr>';
+                    alert('Cart has been cleared!');
+                }
+            });
+
+            // Checkout Button Functionality
+            document.querySelector('.checkout').addEventListener('click', () => {
+                window.location.href = 'checkout.html'; // Redirect to checkout page
+            });
+        });
+    </script>
+</body>
+</html>
