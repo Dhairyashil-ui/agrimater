@@ -400,14 +400,14 @@ body {
   }
 
   body {
-    padding-bottom: 5000px; /* Adjust bottom padding for smaller screen */
+    padding-bottom: 1000px; /* Adjust bottom padding for smaller screen */
   }
 }
 
 @media (max-width: 400px) {
   body {
+    height: 120vh; /* Increase height to 120% of the viewport height */
     padding-bottom: 50px; /* Adjust bottom padding for smaller screen */
-    height: 100vh; /* Ensure the body takes the full height of the viewport */
     overflow-y: auto; /* Allow scrolling if content overflows */
   }
 
@@ -425,7 +425,6 @@ body {
   }
 }
 
-	
 
 /* ===================== Home Page Styles ===================== */
 #home-page {
