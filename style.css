@@ -400,7 +400,34 @@ body {
   }
 
   body {
-    padding-bottom: 5000px; /* Adjust bottom padding for smaller screen */
+    padding-bottom: 900px; /* Adjust bottom padding for smaller screen */
+  }
+}
+/* ===================== Media Queries ===================== */
+@media (max-width: 480px) { /* Target devices with a width of 480px or smaller */
+  .navbar {
+    flex-direction: column; /* Stack navbar items vertically */
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .navbar h1 {
+    font-size: 20px; /* Further reduce font size */
+  }
+
+  .user-info {
+    align-items: flex-start; /* Align user info to the left */
+    font-size: 14px; /* Reduce font size for mobile */
+  }
+
+  .logout-btn {
+    font-size: 12px; /* Smaller button text */
+    padding: 6px 10px;
+  }
+
+  /* Increased bottom padding for better space on small screens */
+  body {
+    padding-bottom: 900px; /* Increased space at the bottom for mobile screens */
   }
 }
 
