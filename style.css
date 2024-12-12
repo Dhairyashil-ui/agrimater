@@ -399,13 +399,13 @@ body {
   }
 
   body {
-    padding-bottom: 5000px; /* Adjust bottom padding for smaller screen */
+    padding-bottom: 1050px; /* Adjust bottom padding for smaller screen */
   }
 }
 @media (max-width: 768px) {
-        body {
-    padding-bottom: 1500px; /* Adjust bottom padding for smaller screen */
-  }
+	body {
+		padding-bottom: 50px; /* Adjust bottom padding for smaller screen */
+	}
 }
 	
 
