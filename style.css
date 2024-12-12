@@ -406,7 +406,7 @@ body {
 
 @media (max-width: 400px) {
   body {
-    height: 120vh; /* Increase height to 120% of the viewport height */
+    height: 1200vh; /* Increase height to 120% of the viewport height */
     padding-bottom: 50px; /* Adjust bottom padding for smaller screen */
     overflow-y: auto; /* Allow scrolling if content overflows */
   }
