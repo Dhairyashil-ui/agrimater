@@ -398,16 +398,35 @@ body {
     padding: 6px 10px;
   }
 
- 
+  body {
+    padding-bottom: 1500px; /* Adjust bottom padding for smaller screen */
+  }
 }
+/* ===================== Media Queries ===================== */
 @media (max-width: 400px) {
-	body {
-		padding-bottom: 1500px; 
-		
-		height:3000px;/* Adjust bottom padding for smaller screen */
-	}
+  .navbar {
+    flex-direction: column; /* Stack navbar items vertically */
+    align-items: flex-start;
+  }
+
+  .navbar h1 {
+    font-size: 20px; /* Further reduce font size */
+  }
+
+  .user-info {
+    align-items: flex-start; /* Align user info to the left */
+    font-size: 16px;
+  }
+
+  .logout-btn {
+    font-size: 12px; /* Smaller button text */
+    padding: 6px 10px;
+  }
+
+  body {
+    padding-bottom: 1500px; /* Adjust bottom padding for smaller screen */
+  }
 }
-	
 
 
 /* ===================== Home Page Styles ===================== */
