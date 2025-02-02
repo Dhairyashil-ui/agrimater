@@ -323,7 +323,7 @@ cursor: pointer;
 body {
   font-family: Arial, sans-serif;
   background-color: #fafafa;
-  background-image: url('https://img.freepik.com/premium-vector/abstract-yellow-blue-background-diagonal-papercut-line_464385-287.jpg');
+  # background-image: url('https://img.freepik.com/premium-vector/abstract-yellow-blue-background-diagonal-papercut-line_464385-287.jpg');
   background-size: cover; /* Ensures the image covers the screen */
   color: #333;
   padding-bottom: 880px; /* Add space at the bottom to prevent content from being hidden under the navbar */
